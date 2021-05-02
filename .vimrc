@@ -8,11 +8,14 @@ filetype plugin on
 filetype indent on
 syntax enable
 
+colo default
+
 au FocusGained,BufEnter * checktime
 
 " SETTINGS
 
     set foldcolumn=0
+    set encoding=utf-8
 
     set mouse=
     set wildmenu
@@ -73,14 +76,18 @@ call plug#begin('~/.vim/plugged')
     Plug 'posva/vim-vue'
     Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
     Plug 'junegunn/fzf.vim'
-    Plug 'KarimElghamry/vim-auto-comment'
+    Plug 'mhinz/vim-startify'
+    Plug 'vim-scripts/npm'
 call plug#end()
 
 inoremap jj <ESC>
 nmap <leader>vo :vsplit ~/.vimrc<cr>
 nmap <leader>vr :so ~/.vimrc<cr>
 nmap <leader>q :q!<cr>
+nmap <leader>qq :qa!<cr>
 nmap <leader>w :w!<cr>
+nmap <leader>ww :wa!<cr>
+nmap <leader>wq :wqa!<cr>
 nmap <leader>nn :NERDTreeToggle<cr>
 nmap <leader>ff :Files %:p:h<cr>
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
@@ -96,3 +103,10 @@ highlight CursorLine cterm=bold ctermbg=235
 highlight CursorLineNr cterm=bold ctermfg=230 ctermbg=236
 autocmd InsertEnter * highlight CursorLine cterm=none ctermbg=none
 autocmd InsertLeave * highlight CursorLine cterm=bold ctermbg=236
+
+augroup NERD
+    au!
+    autocmd VimEnter * NERDTree
+    autocmd VimEnter * wincmd p
+augroup END
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
