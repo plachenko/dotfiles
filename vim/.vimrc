@@ -79,6 +79,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'KarimElghamry/vim-auto-comment'
     Plug 'leafOfTree/vim-vue-plugin'
     Plug 'tomtom/tcomment_vim'
+    Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 inoremap jj <ESC>
