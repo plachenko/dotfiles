@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/denis/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
+export DOTFILES=$HOME/.dotfiles
 
 export EDITOR=/usr/bin/vim
 # [[ $TERM != "screen" ]] && exec ~/dev-tmux.sh
