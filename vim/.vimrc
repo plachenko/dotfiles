@@ -73,11 +73,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'preservim/nerdtree' 
     Plug 'tpope/vim-fugitive' 
     Plug 'ryanoasis/vim-devicons'
-    Plug 'posva/vim-vue'
     Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
     Plug 'junegunn/fzf.vim'
     Plug 'mhinz/vim-startify'
     Plug 'vim-scripts/npm'
+    Plug 'KarimElghamry/vim-auto-comment'
+    Plug 'leafOfTree/vim-vue-plugin'
+    Plug 'tomtom/tcomment_vim'
 call plug#end()
 
 inoremap jj <ESC>
@@ -91,6 +93,9 @@ nmap <leader>wq :wqa!<cr>
 nmap <leader>nn :NERDTreeToggle<cr>
 nmap <leader>ff :Files %:p:h<cr>
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+
+nnoremap <c-w><space> :tab split<cr>
+tnoremap <c-w><space> <c-w>:tab split<cr>
 
 highlight ColorColumn ctermbg=DarkGrey ctermfg=Red
 highlight netrwDir guifg=#5eacd3
@@ -110,3 +115,16 @@ augroup NERD
     autocmd VimEnter * wincmd p
 augroup END
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+function! OnChangeVueSyntax(syntax)
+  echom 'Syntax is '.a:syntax
+  if a:syntax == 'html'
+    setlocal commentstring=<!--%s-->
+    setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
+  elseif a:syntax =~ 'css'
+    setlocal comments=s1:/*,mb:*,ex:*/ commentstring&
+  else
+    setlocal commentstring=//%s
+    setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+  endif
+endfunction
