@@ -75,7 +75,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'ryanoasis/vim-devicons'
     Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
     Plug 'junegunn/fzf.vim'
-    Plug 'mhinz/vim-startify'
     Plug 'vim-scripts/npm'
     Plug 'KarimElghamry/vim-auto-comment'
     Plug 'leafOfTree/vim-vue-plugin'
