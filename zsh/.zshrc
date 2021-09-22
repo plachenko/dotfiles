@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 export DOTFILES=$HOME/.dotfiles
 
 export EDITOR=/usr/bin/vim
-# [[ $TERM != "screen" ]] && exec ~/dev-tmux.sh
+[[ $TERM != "screen" ]] && exec tmux 
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -103,3 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias vim="nvim"
+alias vs="[[ -a Session.vim ]] && vim -S || vim"
