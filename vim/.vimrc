@@ -90,13 +90,14 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 
-inoremap kj <ESC>
+inoremap jj <ESC>
 inoremap kk <ESC>l
-xnoremap kj <ESC>
+xnoremap <leader>kj <ESC>
 
 nmap <leader>vo :vsplit ~/.vimrc<cr>
 nmap <leader>vr :so ~/.vimrc<cr>
 nmap <leader>q :q!<cr>
+nmap <leader>ga :Git add<cr>
 nmap <leader>qq :qa!<cr>
 nmap <leader>w :w!<cr>
 nmap <leader>ww :wa!<cr>
