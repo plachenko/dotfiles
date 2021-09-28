@@ -87,12 +87,21 @@ call plug#begin('~/.vim/plugged')
     Plug 'Shougo/context_filetype.vim'
     Plug 'preservim/nerdcommenter'
     Plug 'dbakker/vim-projectroot'
+    Plug 'tpope/vim-surround'
+    Plug 'mileszs/ack.vim'
+
+    Plug 'MarcWeber/vim-addon-mw-utils'
+    Plug 'tomtom/tlib_vim'
+    Plug 'garbas/vim-snipmate'
+    Plug 'grvcoelho/vim-javascript-snippets'
 call plug#end()
 
 
 inoremap jj <ESC>
 inoremap kk <ESC>l
-xnoremap <leader>kj <ESC>
+xnoremap <leader> <ESC>
+
+" nnoremap <leader>ls :'<','>s/; /\r/<cr>
 
 nmap <leader>vo :vsplit ~/.vimrc<cr>
 nmap <leader>vr :so ~/.vimrc<cr>
@@ -126,7 +135,7 @@ if !exists('g:context_filetype#same_filetypes')
 endif
 
 let g:context_filetype#filetypes.svelte =
-\ [
+            \ [
 \   {'filetype' : 'javascript', 'start' : '<script>', 'end' : '</script>'},
 \   {
 \     'filetype': 'typescript',
@@ -319,3 +328,5 @@ augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
