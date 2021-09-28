@@ -134,6 +134,8 @@ if !exists('g:context_filetype#same_filetypes')
   let g:context_filetype#filetypes = {}
 endif
 
+let g:snipMate = { 'snippet_version' : 1 }
+
 let g:context_filetype#filetypes.svelte =
             \ [
 \   {'filetype' : 'javascript', 'start' : '<script>', 'end' : '</script>'},
